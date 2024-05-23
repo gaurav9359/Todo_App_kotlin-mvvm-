@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="task"
+            type="com.example.todoapp.models.TaskModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_margin="7dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/custom_background"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title :  "
+                android:textStyle="italic"
+                android:textColor="#CDDC39"
+                />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/taskTitle"
+                android:textColor="#ffff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{task.title}"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description :  "
+                android:textStyle="italic"
+                android:textColor="#CDDC39"
+                />
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/white"
+                android:id="@+id/taskDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{task.description}" />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</layout>

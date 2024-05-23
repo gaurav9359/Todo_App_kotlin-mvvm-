@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <RelativeLayout
+        android:background="#000000"
+        android:layout_width="match_parent"
+        android:id="@+id/container"
+        android:padding="50dp"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="TODO LIST"
+            android:textColor="#FFEB3B"
+            android:textColorHint="#FFEB3B"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
+
+        <androidx.fragment.app.FragmentContainerView
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment1"
+            android:layout_below="@id/heading" />
+
+
+    </RelativeLayout>
+</layout>
