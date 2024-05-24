@@ -1,10 +1,14 @@
 package com.example.todoapp.ui.screens
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -31,6 +35,11 @@ class CreateTask : Fragment() {
 
         binding.titleEditText.setText(viewModel.title)
         binding.descriptionEditText.setText(viewModel.description)
+
+        if(viewModel.position!=-1){
+            binding.deleteButton.visibility=View.VISIBLE
+            binding.textView.setText("Edit Task")
+        }
 
         binding.saveButton.setOnClickListener {
             viewModel.title = binding.titleEditText.text.toString()
@@ -63,10 +72,46 @@ class CreateTask : Fragment() {
             viewModel.position=-1
             viewModel.title=""
             viewModel.description=""
-            Toast.makeText(requireContext(), "Changes Not Saved", Toast.LENGTH_SHORT).show()
-            parentFragmentManager.beginTransaction().replace(R.id.fragment1,TodoList()).commit()
+            goToTodo("Changes Not Saved")
         }
 
 
+        binding.deleteButton.setOnClickListener{
+
+            val builder = AlertDialog.Builder(requireContext())
+            builder.setTitle("Delete")
+            builder.setMessage("CONFIRM DELETION")
+
+
+            builder.setPositiveButton("Yes"){dialogInterface, which ->
+
+                Log.d("logging",viewModel.position.toString())
+                viewModel.deleteTask()
+                position=-1
+                goToTodo("Task Deleted Successfully")
+            }
+
+            builder.setNegativeButton("No"){dialogInterface, which ->
+                dialogInterface.dismiss()
+            }
+
+            val alertDialog: AlertDialog = builder.create()
+            alertDialog.setCancelable(false)
+            alertDialog.show()
+
+
+        }
+
+
+
+
     }
+
+    fun goToTodo(message:String){
+        Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+        parentFragmentManager.beginTransaction().replace(R.id.fragment1,TodoList()).commit()
+    }
+
+
+
 }

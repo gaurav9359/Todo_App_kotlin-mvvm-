@@ -5,11 +5,11 @@
     >
 
     <RelativeLayout
-        android:background="#000000"
-        android:layout_width="match_parent"
         android:id="@+id/container"
-        android:padding="50dp"
-        android:layout_height="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:padding="50dp">
 
         <TextView
             android:id="@+id/heading"
@@ -18,19 +18,18 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:gravity="center"
-            android:text="TODO LIST"
+            android:text="NOTES TAKING APP"
             android:textColor="#FFEB3B"
             android:textColorHint="#FFEB3B"
             android:textSize="20dp"
             android:textStyle="bold" />
 
 
-
         <androidx.fragment.app.FragmentContainerView
 
+            android:id="@+id/fragment1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/fragment1"
             android:layout_below="@id/heading" />
 
 

@@ -65,11 +65,10 @@ class TodoList : Fragment(), TaskAdapter.OnItemClickListener {
     }
 
     override fun onItemClick(position: Int) {
-
         viewModel.position=position;
         val clickedTask = adapter.taskList[position]
         Log.d("TaskClick", "Clicked task: $clickedTask")
-        viewModel.setSelectedTask(clickedTask,position)
+        viewModel.setSelectedTask(clickedTask)
 
         parentFragmentManager.beginTransaction().replace(R.id.fragment1,CreateTask()).commit()
     }

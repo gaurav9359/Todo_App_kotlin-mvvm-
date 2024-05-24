@@ -1,14 +1,13 @@
 package com.example.todoapp.ui.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.example.todoapp.models.TaskModel
-import java.text.FieldPosition
+import com.example.todoapp.models.TaskRepo
 
 class TaskViewModel : ViewModel() {
-    private val _taskList = MutableLiveData<MutableList<TaskModel>>(mutableListOf())
-    val taskList: LiveData<MutableList<TaskModel>> get() = _taskList
+    var taskRepo=TaskRepo()
+    var taskList=taskRepo.getTaskList()
     var position:Int=-1
 
     var title: String = ""
@@ -16,25 +15,35 @@ class TaskViewModel : ViewModel() {
 
     fun addTask() {
         val task = TaskModel(title, description)
-        val updatedList = _taskList.value?.toMutableList() ?: mutableListOf()
+        val updatedList = taskList.value?.toMutableList() ?: mutableListOf()
         if(position==-1){
             updatedList.add(task)
-            _taskList.value = updatedList
+            taskRepo.setTaskList(updatedList)
             title = ""
             description = ""
         }
         else{
             updatedList[position]=task
-            _taskList.value=updatedList
+            taskRepo.setTaskList(updatedList)
             title=""
             description=""
             position=-1
         }
     }
 
-    fun setSelectedTask(newObject:TaskModel,position: Int){
-
+    fun setSelectedTask(newObject: TaskModel){
         title=newObject.title
         description=newObject.description
+    }
+
+
+    fun deleteTask(){
+        Log.d("oreno",this.position.toString())
+        val updatedList = taskList.value?.toMutableList() ?: mutableListOf()
+        updatedList.removeAt(this.position)
+        taskRepo.setTaskList(updatedList)
+        title=""
+        description=""
+        this.position=-1
     }
 }
