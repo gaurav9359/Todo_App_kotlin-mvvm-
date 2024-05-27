@@ -11,7 +11,7 @@
         android:layout_margin="10dp"
         android:orientation="vertical"
         android:padding="16dp"
-        tools:context=".ui.screens.CreateTask">
+        tools:context=".ui.screens.FragmentCreateTask">
 
         <TextView
             android:textColor="@color/white"

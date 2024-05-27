@@ -15,7 +15,7 @@ import com.example.todoapp.ui.adapters.TaskAdapter
 import com.example.todoapp.ui.viewmodel.TaskViewModel
 
 
-class TodoList : Fragment(), TaskAdapter.OnItemClickListener {
+class FragmentTodoList : Fragment(), TaskAdapter.OnItemClickListener {
 
     private lateinit var binding: FragmentTodoListBinding
     private val viewModel: TaskViewModel by activityViewModels()
@@ -38,7 +38,7 @@ class TodoList : Fragment(), TaskAdapter.OnItemClickListener {
 
         binding.openDialogueButton.setOnClickListener {
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment1, CreateTask())
+                .replace(R.id.fragment1, FragmentCreateTask())
                 .commit()
         }
     }
@@ -70,6 +70,6 @@ class TodoList : Fragment(), TaskAdapter.OnItemClickListener {
         Log.d("TaskClick", "Clicked task: $clickedTask")
         viewModel.setSelectedTask(clickedTask)
 
-        parentFragmentManager.beginTransaction().replace(R.id.fragment1,CreateTask()).commit()
+        parentFragmentManager.beginTransaction().replace(R.id.fragment1,FragmentCreateTask()).commit()
     }
 }

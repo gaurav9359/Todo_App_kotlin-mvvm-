@@ -1,14 +1,11 @@
 package com.example.todoapp.ui.screens
 
 import android.app.AlertDialog
-import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,7 +13,7 @@ import com.example.todoapp.R
 import com.example.todoapp.databinding.FragmentCreateTaskBinding
 import com.example.todoapp.ui.viewmodel.TaskViewModel
 
-class CreateTask : Fragment() {
+class FragmentCreateTask : Fragment() {
 
     private lateinit var binding: FragmentCreateTaskBinding
     private val viewModel: TaskViewModel by activityViewModels()
@@ -57,7 +54,7 @@ class CreateTask : Fragment() {
                 Toast.makeText(requireContext(), "Saved", Toast.LENGTH_SHORT).show()
 
                 parentFragmentManager.beginTransaction()
-                    .replace(R.id.fragment1, TodoList())
+                    .replace(R.id.fragment1, FragmentTodoList())
                     .commit()
             }
             else{
@@ -109,7 +106,7 @@ class CreateTask : Fragment() {
 
     fun goToTodo(message:String){
         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-        parentFragmentManager.beginTransaction().replace(R.id.fragment1,TodoList()).commit()
+        parentFragmentManager.beginTransaction().replace(R.id.fragment1,FragmentTodoList()).commit()
     }
 
 

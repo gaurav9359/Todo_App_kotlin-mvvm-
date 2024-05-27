@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
 
 
             supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment1, TodoList())
+                .replace(R.id.fragment1, FragmentTodoList())
                 .commit()
 
     }

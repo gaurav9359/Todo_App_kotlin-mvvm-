@@ -6,7 +6,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.screens.TodoList">
+        tools:context=".ui.screens.FragmentTodoList">
 
         <TextView
             android:id="@+id/empty_list"
